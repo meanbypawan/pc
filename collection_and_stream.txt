@@ -1,0 +1,641 @@
+
+What is the Java Collection Framework?
+
+Difference between Collection and Collections
+
+Difference between List, Set, and Map
+
+What is the difference between ArrayList and LinkedList
+
+Difference between HashSet and TreeSet
+
+What is HashMap? How does it work internally?
+
+Difference between HashMap and Hashtable
+
+Difference between HashMap and LinkedHashMap
+
+Difference between HashMap and TreeMap
+
+What is Comparable vs Comparator
+
+🔹 Intermediate Level
+How does HashMap handle collisions?
+
+What is load factor & capacity in HashMap?
+
+What is fail-fast vs fail-safe iterator?
+
+What is Iterator vs ListIterator?
+
+Difference between ArrayList and Vector
+
+What is ConcurrentHashMap?
+
+How does HashSet ensure uniqueness?
+
+What is equals() and hashCode() contract?
+
+What is BlockingQueue?
+
+Difference between Queue and Deque
+
+🔹 Advanced Level
+What happens when you override only equals() but not hashCode()?
+
+Internal working of ConcurrentHashMap (Java 8)
+
+Difference between Synchronized Collection vs Concurrent Collection
+
+What is CopyOnWriteArrayList?
+
+How does TreeMap maintain sorting?
+
+What is WeakHashMap?
+
+What is IdentityHashMap?
+
+How does HashMap resize (rehashing) work?
+
+What is Immutable Collection?
+
+Difference between Iterable and Collection
+
+🚀 Java Stream API Interview Questions
+🔹 Basic Level
+What is Stream API?
+
+Difference between Collection and Stream
+
+What is lazy evaluation in streams?
+
+What is terminal vs intermediate operation?
+
+What is forEach() vs map()
+
+What is filter() in stream
+
+What is reduce() method
+
+🔹 Intermediate Level
+Difference between map() and flatMap()
+
+What is distinct() in stream
+
+What is sorted() in stream
+
+What is limit() and skip()
+
+What is collect() method
+
+What is Collectors class
+
+Difference between findFirst() and findAny()
+
+What is Optional class
+
+What is peek() method
+
+🔹 Advanced Level
+Difference between parallel stream vs sequential stream
+
+What is ForkJoinPool in streams
+
+When to use parallel streams
+
+What are side effects in streams
+
+What is stateful vs stateless lambda
+
+How stream handles thread safety
+
+What is spliterator
+
+What is short-circuiting operations
+
+Can we reuse a stream? Why not?
+
+Difference between map() vs collect()
+
+🔥 Coding-Based Questions (Very Important)
+These are frequently asked in interviews:
+
+✔ Collections
+Reverse an ArrayList
+
+Find duplicates in a list
+
+Sort a list of objects
+
+Remove duplicates from list
+
+Find frequency of elements
+
+✔ Streams
+// Find even numbers
+list.stream().filter(n -> n % 2 == 0).toList();
+
+// Find max
+list.stream().max(Integer::compare);
+
+// Count elements
+list.stream().count();
+
+// Convert list to map
+list.stream().collect(Collectors.toMap(x -> x.getId(), x -> x));
+💡 Pro Interview Tips
+Focus on HashMap internal working (very frequently asked)
+
+Be strong in equals() & hashCode()
+
+Practice Stream coding questions
+
+Understand time complexity differences
+
+👉 If you want, I can:
+
+Give answers to each question (with diagrams)
+
+Provide real interview questions from TCS/Infosys/Wipro
+
+Take a mock interview with you
+
+
+Give me the answer of all Stream questions
+
+Great — let’s go through all Java Stream API interview questions with clear answers + examples 👇
+
+🚀 Java Stream API – Complete Answers
+🔹 1. What is Stream API?
+Stream API (introduced in Java 8) is used to process collections of data in a functional and declarative way.
+
+👉 It allows operations like:
+
+filtering
+
+mapping
+
+sorting
+
+reducing
+
+list.stream().filter(x -> x > 10).toList();
+🔹 2. Collection vs Stream
+Feature	Collection	Stream
+Storage	Stores data	Doesn’t store data
+Nature	Eager	Lazy
+Reuse	Yes	No
+Traversal	Multiple times	One-time
+🔹 3. What is Lazy Evaluation?
+Operations are executed only when a terminal operation is called.
+
+list.stream()
+    .filter(x -> x > 10)   // not executed yet
+    .count();              // executed here
+🔹 4. Intermediate vs Terminal Operations
+Intermediate (returns Stream)
+filter()
+
+map()
+
+sorted()
+
+Terminal (returns result)
+forEach()
+
+collect()
+
+count()
+
+🔹 5. forEach() vs map()
+forEach()	map()
+Terminal	Intermediate
+No return	Returns new stream
+Used for printing	Used for transformation
+list.stream().map(x -> x * 2).toList();
+🔹 6. filter()
+Used to select elements based on condition
+
+list.stream()
+    .filter(x -> x % 2 == 0)
+    .toList();
+🔹 7. reduce()
+Used to combine elements into single result
+
+int sum = list.stream().reduce(0, (a, b) -> a + b);
+🔹 8. map() vs flatMap()
+map()
+Transforms each element
+
+flatMap()
+Flattens nested structure
+
+List<List<Integer>> list = ...
+list.stream()
+    .flatMap(x -> x.stream())
+    .toList();
+🔹 9. distinct()
+Removes duplicates
+
+list.stream().distinct().toList();
+🔹 10. sorted()
+list.stream().sorted().toList();
+Custom:
+
+list.stream().sorted((a,b) -> b-a).toList();
+🔹 11. limit() and skip()
+list.stream().limit(5).toList(); // first 5
+list.stream().skip(5).toList();  // skip first 5
+🔹 12. collect()
+Converts stream into collection
+
+list.stream().collect(Collectors.toList());
+🔹 13. Collectors class
+Utility class to perform mutable reduction
+
+Examples:
+
+Collectors.toList()
+Collectors.toSet()
+Collectors.groupingBy()
+Collectors.joining()
+🔹 14. findFirst() vs findAny()
+findFirst()	findAny()
+Returns first element	Returns any element
+Ordered streams	Better for parallel
+🔹 15. Optional class
+Used to avoid NullPointerException
+
+Optional<Integer> val = list.stream().findFirst();
+val.ifPresent(System.out::println);
+🔹 16. peek()
+Used for debugging
+
+list.stream()
+    .peek(x -> System.out.println(x))
+    .toList();
+🔹 17. Parallel vs Sequential Stream
+list.parallelStream()
+Sequential	Parallel
+Single thread	Multiple threads
+Slower	Faster (large data)
+🔹 18. ForkJoinPool
+Parallel streams use ForkJoinPool.commonPool()
+
+👉 It splits tasks into smaller subtasks
+
+🔹 19. When to use Parallel Streams?
+Use when:
+
+Large data
+
+Independent operations
+
+CPU intensive
+
+Avoid when:
+
+Small data
+
+Shared mutable state
+
+🔹 20. Side Effects in Streams
+Avoid modifying external variables
+
+❌ Bad:
+
+list.stream().forEach(x -> sum += x);
+🔹 21. Stateful vs Stateless Lambda
+Stateless	Stateful
+No dependency	Depends on external state
+Safe	Unsafe
+🔹 22. Thread Safety
+Streams are:
+
+Not thread-safe by default
+
+Parallel streams need stateless operations
+
+🔹 23. Spliterator
+Used to split data for parallel processing
+
+🔹 24. Short-circuiting operations
+Stop processing early
+
+Examples:
+
+findFirst()
+
+anyMatch()
+
+🔹 25. Can we reuse a Stream?
+❌ No
+
+Stream s = list.stream();
+s.count();
+s.count(); // Exception
+🔹 26. map() vs collect()
+map()	collect()
+Transform data	Convert to collection
+Intermediate	Terminal
+🔥 Bonus Coding Examples
+✔ Grouping
+list.stream().collect(Collectors.groupingBy(x -> x));
+✔ Frequency
+list.stream()
+    .collect(Collectors.groupingBy(x -> x, Collectors.counting()));
+✔ Join Strings
+list.stream().collect(Collectors.joining(","));
+✅ Final Tip
+For interviews focus on:
+
+map vs flatMap
+
+reduce
+
+collect + groupingBy
+
+parallel stream concepts
+
+👉 If you want next level:
+I can give you
+✅ 50 real coding questions on Stream API
+✅ Tricky interview questions asked in MNCs
+✅ Mock interview (you answer, I evaluate)
+
+
+Give me practicle excersie of collection and stream
+
+Great 👍 — the best way to master Java Collections + Stream API is through hands-on exercises.
+I’ll give you real interview-level practical questions (with increasing difficulty).
+
+💻 Java Collections + Stream Practical Exercises
+🔰 Beginner Level
+✅ 1. Find Even Numbers
+👉 Input: List of integers
+👉 Output: Only even numbers
+
+List<Integer> list = List.of(1,2,3,4,5,6);
+✅ 2. Remove Duplicates
+👉 Input: [1,2,2,3,4,4,5]
+👉 Output: [1,2,3,4,5]
+
+✅ 3. Count Elements
+👉 Count total number of elements in a list
+
+✅ 4. Find Maximum Number
+👉 From a list of integers
+
+✅ 5. Sort List
+👉 Sort in:
+
+ascending
+
+descending
+
+⚡ Intermediate Level
+✅ 6. Find Frequency of Each Element
+👉 Input: [a,b,a,c,b,a]
+👉 Output:
+
+a → 3  
+b → 2  
+c → 1  
+✅ 7. Convert List to Map
+👉 Convert list of objects into map
+
+class Student {
+    int id;
+    String name;
+}
+👉 Output:
+
+{id → Student}
+✅ 8. Group Strings by Length
+👉 Input: ["java","python","c","js"]
+👉 Output:
+
+3 → [java]  
+6 → [python]  
+1 → [c]  
+2 → [js]  
+✅ 9. Find First Non-Repeated Character
+👉 Input: "aabbcde"
+👉 Output: c
+
+✅ 10. Find Duplicate Elements
+👉 Input: [1,2,3,2,4,1]
+👉 Output: [1,2]
+
+🚀 Advanced Level
+✅ 11. Sort Employees by Salary
+class Employee {
+    int id;
+    String name;
+    double salary;
+}
+👉 Sort by salary (descending)
+
+✅ 12. Find Second Highest Number
+👉 Input: [10,20,30,40]
+👉 Output: 30
+
+✅ 13. Partition Numbers (Even/Odd)
+👉 Output:
+
+true → even  
+false → odd  
+✅ 14. Find Longest String
+👉 From list of strings
+
+✅ 15. Flatten Nested List
+List<List<Integer>> list = List.of(
+    List.of(1,2),
+    List.of(3,4)
+);
+👉 Output: [1,2,3,4]
+
+🔥 Real Interview Level
+✅ 16. Top 3 Highest Salaries
+👉 Return top 3 employees by salary
+
+✅ 17. Check Palindrome Strings
+👉 Filter only palindrome words
+
+✅ 18. Find Sum of Squares of Even Numbers
+✅ 19. Group Employees by Department
+Map<String, List<Employee>>
+✅ 20. Find Most Frequent Element
+🧠 Challenge Problems (Very Important)
+💡 21. Custom Sorting
+Sort strings based on:
+
+length
+
+then alphabetically
+
+💡 22. Merge Two Lists Without Duplicates
+💡 23. Find Missing Number (1–100)
+💡 24. LRU Cache (Collections + Logic)
+💡 25. Detect Cycle in List (Advanced DS)
+🎯 Pro Tip for Practice
+Do each question in:
+
+✅ Traditional way (loop)
+
+✅ Stream API way
+
+👉 Want Next Step?
+I can:
+
+✔ Provide solutions for all exercises (step-by-step)
+
+✔ Give real company coding questions (TCS, Infosys, Accenture)
+
+✔ Take a live mock coding interview
+
+Just tell me 👍
+
+
+Give me with solutions
+
+Perfect 👍 — here are the Collections + Stream practical exercises WITH solutions (clean + interview-ready).
+
+🔰 Beginner Level (With Solutions)
+✅ 1. Find Even Numbers
+List<Integer> list = List.of(1,2,3,4,5,6);
+
+// Stream
+List<Integer> even = list.stream()
+        .filter(x -> x % 2 == 0)
+        .toList();
+
+// Traditional
+List<Integer> result = new ArrayList<>();
+for(int x : list){
+    if(x % 2 == 0) result.add(x);
+}
+✅ 2. Remove Duplicates
+List<Integer> list = List.of(1,2,2,3,4,4,5);
+
+// Stream
+List<Integer> unique = list.stream()
+        .distinct()
+        .toList();
+
+// Collection way
+Set<Integer> set = new HashSet<>(list);
+✅ 3. Count Elements
+long count = list.stream().count();
+✅ 4. Find Maximum Number
+int max = list.stream()
+        .max(Integer::compare)
+        .get();
+✅ 5. Sort List
+// Ascending
+list.stream().sorted().toList();
+
+// Descending
+list.stream().sorted((a,b) -> b - a).toList();
+⚡ Intermediate Level (With Solutions)
+✅ 6. Frequency of Each Element
+List<String> list = List.of("a","b","a","c","b","a");
+
+Map<String, Long> freq = list.stream()
+    .collect(Collectors.groupingBy(x -> x, Collectors.counting()));
+✅ 7. Convert List to Map
+Map<Integer, Student> map = students.stream()
+    .collect(Collectors.toMap(s -> s.id, s -> s));
+✅ 8. Group Strings by Length
+List<String> list = List.of("java","python","c","js");
+
+Map<Integer, List<String>> result =
+    list.stream().collect(Collectors.groupingBy(String::length));
+✅ 9. First Non-Repeated Character
+String str = "aabbcde";
+
+Character ch = str.chars()
+    .mapToObj(c -> (char)c)
+    .collect(Collectors.groupingBy(c -> c, LinkedHashMap::new, Collectors.counting()))
+    .entrySet()
+    .stream()
+    .filter(e -> e.getValue() == 1)
+    .map(e -> e.getKey())
+    .findFirst()
+    .get();
+✅ 10. Find Duplicate Elements
+List<Integer> list = List.of(1,2,3,2,4,1);
+
+Set<Integer> seen = new HashSet<>();
+
+Set<Integer> duplicates = list.stream()
+    .filter(x -> !seen.add(x))
+    .collect(Collectors.toSet());
+🚀 Advanced Level (With Solutions)
+✅ 11. Sort Employees by Salary (Descending)
+employees.stream()
+    .sorted((e1, e2) -> Double.compare(e2.salary, e1.salary))
+    .toList();
+✅ 12. Second Highest Number
+int second = list.stream()
+    .distinct()
+    .sorted((a,b) -> b - a)
+    .skip(1)
+    .findFirst()
+    .get();
+✅ 13. Partition Even/Odd
+Map<Boolean, List<Integer>> result =
+    list.stream()
+        .collect(Collectors.partitioningBy(x -> x % 2 == 0));
+✅ 14. Longest String
+String longest = list.stream()
+    .max(Comparator.comparingInt(String::length))
+    .get();
+✅ 15. Flatten Nested List
+List<List<Integer>> list = List.of(
+    List.of(1,2),
+    List.of(3,4)
+);
+
+List<Integer> flat = list.stream()
+    .flatMap(x -> x.stream())
+    .toList();
+🔥 Real Interview Level (With Solutions)
+✅ 16. Top 3 Highest Salaries
+employees.stream()
+    .sorted((e1,e2) -> Double.compare(e2.salary, e1.salary))
+    .limit(3)
+    .toList();
+✅ 17. Palindrome Strings
+List<String> words = List.of("madam","java","level");
+
+List<String> result = words.stream()
+    .filter(s -> s.equals(new StringBuilder(s).reverse().toString()))
+    .toList();
+✅ 18. Sum of Squares of Even Numbers
+int sum = list.stream()
+    .filter(x -> x % 2 == 0)
+    .map(x -> x * x)
+    .reduce(0, Integer::sum);
+✅ 19. Group Employees by Department
+Map<String, List<Employee>> result =
+    employees.stream()
+        .collect(Collectors.groupingBy(e -> e.department));
+✅ 20. Most Frequent Element
+int mostFrequent = list.stream()
+    .collect(Collectors.groupingBy(x -> x, Collectors.counting()))
+    .entrySet()
+    .stream()
+    .max(Map.Entry.comparingByValue())
+    .get()
+    .getKey();
+💡 Bonus (Important)
+✅ Merge Two Lists Without Duplicates
+List<Integer> merged = Stream.concat(list1.stream(), list2.stream())
+    .distinct()
+    .toList();
+✅ Custom Sorting (Length + Alphabet)
+list.stream()
+    .sorted(Comparator.comparing(String::length)
+    .thenComparing(String::compareTo))
+    .toList();
