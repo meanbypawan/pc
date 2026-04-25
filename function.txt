@@ -1,0 +1,99 @@
+Basic Fundamental :-
+  Python Statement
+  Coversion :- int(), float(), complex()m bool() etc.
+  Operators
+  Datatypes :-
+    int
+    flot
+    bool
+    str
+    list
+    set
+    tuple
+    dict
+    fronzenset
+  Controll Statement :-
+   if
+   if - else
+   if elif else
+   match-case
+   loop:-
+     while
+     for
+  Function :-
+   1. It is block code, perform specific task
+   2. Manage code redundancy
+   3. Provide modular approach :- Divide code into functions
+   4. Make code easy to manage
+   5. Make trouble shooting easy
+   ----------------------------------
+   Types Of function :-
+     Built-in function
+     Userdefined function:-
+   ---------------------------------
+   lambda function
+   generator function
+   recursive function
+   higher order function
+   
+   Syntaxk:-
+     def function_name():
+       -----
+       -----
+       pass
+     
+     def sum(a,b):
+       print(f"Addition : {a+b}")
+     a,b :- argument
+     
+     
+     def sum(a,b):
+       return a+b
+------------------------------------
+  python is call by object reference :-
+  
+  Mutable
+  Immutable
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
